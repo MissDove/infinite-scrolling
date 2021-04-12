@@ -54,21 +54,27 @@ const loadQuotes = async (page, limit) => {
     // show the loader
     showLoader();
 
-    try {
-        // if having more quotes to fetch
-        if (hasMoreQuotes(page, limit, total)) {
-            // call the API to get quotes
-            const response = await getQuotes(page, limit);
+    // to make sure that the loading indicator is always showing, add setTimeout() function
 
-            // show quotes
-            showQuotes(response.data);
+    // 0.5 second later
+    setTimeout(async () => {
+        try {
+            // if having more quotes to fetch
+            if (hasMoreQuotes(page, limit, total)) {
+                // call the API to get quotes
+                const response = await getQuotes(page, limit);
 
-            // update the total
-            total = response.total;
+                // show quotes
+                showQuotes(response.data);
+
+                // update the total
+                total = response.total;
+            }
+        } catch (error) {
+            console.log(error.message);
+        } finally {
+            hideLoader();
         }
-    } catch (error) {
-        console.log(error.message);
-    } finally {
-        hideLoader();
-    }
-}
+    }, 500);
+
+};
