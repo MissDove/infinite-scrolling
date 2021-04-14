@@ -1,0 +1,35 @@
+.container {
+    max-width: 768px;
+    margin: 64px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.quotes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.quote {
+    position: relative;
+    font-size: 20px;
+    line-height: 1.7;
+    word-break: break-word;
+
+
+}
+
+.quote blockquote {
+    margin-bottom: 24px;
+}
+
+.loader {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    opacity: 0;
+}
